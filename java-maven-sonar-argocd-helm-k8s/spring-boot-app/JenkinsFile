@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      image 'saitharun15/test1:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // Mounts the Docker socket from the host to the container.
                                                                       // The container can now send commands to the host’s Docker daemon.
                                                                       // This allows the container to run, build, and manage other containers (Docker-in-Docker setup).
@@ -11,7 +11,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+        //git branch: 'main', url: 'https://github.com/saitharunbalasubramaniam/project-1'
       }
     }
     stage('Build and Test') {
@@ -35,7 +35,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "saitharun15/cicd:${BUILD_NUMBER}"    // ${BUILD_NUMBER} -  ex. DOCKER_IMAGE = "saitharun15/cicd:5"  . 
+        DOCKER_IMAGE = "saitharun15/ultimate-cicd:${BUILD_NUMBER}"    // ${BUILD_NUMBER} -  ex. DOCKER_IMAGE = "saitharun15/cicd:5"  . 
                                                                                     //✅ Creates unique image versions to avoid overwriting old ones
                                                                                     //✅ Tracks which build created which image
                                                                                     //✅ Useful for rollback
